@@ -48,21 +48,22 @@ export default function BaseballGame() {
     _$result.innerHTML +=
       '<p>🎉<strong>정답을 맞추셨습니다!</strong>🎉</p>' +
       '<p>게임을 새로 시작하시겠습니까? <button id="game-restart-button">게임 재시작</button></p>';
-    console.log('🎉정답을 맞추셨습니다!🎉');
+    return '🎉정답을 맞추셨습니다!🎉';
   }
 
   const play = function(computerInputNumbers, userInputNumbers) {
     console.log('computerInputNumbers', computerInputNumbers);
+    let _result = "";
     let { _strikeCount, _ballCount } = getStrikeBall({
       computerInputNumbers: String(computerInputNumbers).split(''),
       userInputNumbers: String(userInputNumbers).split(''),
     });
     console.log('strikeCount', _strikeCount, 'ballCount', _ballCount);
     if (_strikeCount === 3) {
-      correctAnswer();
+      _result = correctAnswer();
       addResetButtonEvent();
     } else {
-      printResult({ _strikeCount, _ballCount });
+      _result = printResult({ _strikeCount, _ballCount });
       const _$app = document.getElementById('app');
       let _$retryResult = document.getElementById('retryResult');
       retryCount++;
@@ -83,7 +84,7 @@ export default function BaseballGame() {
       }
     }
     addSubmitButtonEvent();
-    return '결과 값 String';
+    return _result;
   };
 
   /*
@@ -154,13 +155,11 @@ export default function BaseballGame() {
   function clickSubmitButton() {
     const _userInput = getUserInputNumber(retryCount);
     console.log(retryCount, _userInput);
-    // Input is not valid
     if (!checkValidInput(_userInput)) {
       alert('유효한 input을 입력해주세요.');
       return;
     }
-    //Input valud
-    play(computerInputNumber, _userInput);
+    console.log(play(computerInputNumber, _userInput));
   }
 
   function addSubmitButtonEvent() {
