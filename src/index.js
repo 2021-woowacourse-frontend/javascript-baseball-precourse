@@ -137,6 +137,8 @@ export default function BaseballGame() {
     console.log(retryCount, _userInput);
     // Input is not valid
     if (!checkValidInput(_userInput)) {
+      alert("유효한 input을 입력해주세요.")
+      return ;
     }
     //Input valud
     play(computerInputNumber, _userInput);
