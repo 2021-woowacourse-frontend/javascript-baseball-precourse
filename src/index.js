@@ -43,6 +43,7 @@ export default function BaseballGame() {
     // });
     if (_strikeCount === 3) {
       correctAnswer();
+      addResetButtonEvent();
     } else {
       const _$app = document.getElementById('app');
       let _$retryResult = document.getElementById('retryResult');
@@ -110,15 +111,26 @@ export default function BaseballGame() {
    ** Init
    */
 
-  function init() {}
+  function init() {
+    computerInputNumber = getComputerInputNumber();
+    // remove submit EventListener
+    for(let i = 1; i < retryCount; i++) {
+      let _$submitButton = document.getElementById(
+        `submit${retryCount === 1 ? '' : retryCount}`,
+      );   
+      _$submitButton.removeEventListener('click', () => clickResetButton());
+    }
+    // remove reset EventListener
+    const _$resetButton = document.getElementById(`reset`);
+    _$resetButton.removeEventListener('click', () => clickResetButton())
+    retryCount = 0;
+    const _$retryResult = document.getElementById('retryResult');
+    _$retryResult.remove();
+  }
 
   /*
    ** Event Listener
    */
-
-  function clickResetButton() {
-    const _userInput = getUserInputNumber();
-  }
 
   function clickSubmitButton() {
     const _userInput = getUserInputNumber(retryCount);
@@ -135,6 +147,16 @@ export default function BaseballGame() {
       `submit${retryCount === 0 ? '' : retryCount}`,
     );
     _$submitButton.addEventListener('click', () => clickSubmitButton());
+  }
+
+  function clickResetButton() {
+    init();
+    addSubmitButtonEvent()
+  }
+
+  function addResetButtonEvent() {
+    const _$resetButton = document.getElementById(`reset`);
+    _$resetButton.addEventListener('click', () => clickResetButton());
   }
 }
 
