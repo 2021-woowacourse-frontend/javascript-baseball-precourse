@@ -1,12 +1,37 @@
 export default function BaseballGame() {
+  let computerInputNumber = getComputerInputNumber();
   addSubmitButtonEvent();
 
   /*
    ** Play Game
    */
 
+  function checkStrike({computerInputNumbers, userInputNumbers}) {
+    let _strikeCount = 0;
+    for (let i = 0; i < 3; i++) {
+      if (computerInputNumbers[i] === userInputNumbers[i]) {
+        _strikeCount++;
+      }
+    }
+    return _strikeCount;
+  }
+
+  // function correctAnswer() {
+  //   console.log("🎉정답을 맞추셨습니다!🎉")
+  // }
+
   const play = function(computerInputNumbers, userInputNumbers) {
+    let _ballCount;
+    let _strikeCount;
     console.log(computerInputNumbers, userInputNumbers)
+    _strikeCount = checkStrike({computerInputNumbers: String(computerInputNumbers), userInputNumbers: String(userInputNumbers)})
+    console.log(_strikeCount);
+    // userInputNumbers.forEach((x) => {
+    //   computerInputNumbers;
+    // });
+    // if (_strikeCount === 3) {
+    //   correctAnswer();
+    // }
     return '결과 값 String';
   };
 
@@ -58,7 +83,7 @@ export default function BaseballGame() {
     if (!checkValidInput(_userInput)) {
     }
     //Input valud
-    play(getComputerInputNumber(), _userInput);
+    play(computerInputNumber, _userInput);
   }
 
   function addSubmitButtonEvent() {
