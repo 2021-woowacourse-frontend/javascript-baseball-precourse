@@ -7,7 +7,7 @@ export default function BaseballGame() {
    ** Play Game
    */
 
-  function checkStrike({ computerInputNumbers, userInputNumbers }) {
+  function getStrikeBall({ computerInputNumbers, userInputNumbers }) {
     let _ballCount = 0;
     let _strikeCount = 0;
     for (let i = 0; i < 3; i++) {
@@ -35,7 +35,7 @@ export default function BaseballGame() {
 
   const play = function(computerInputNumbers, userInputNumbers) {
     console.log("computerInputNumbers", computerInputNumbers)
-    let {_strikeCount, _ballCount} = checkStrike({
+    let {_strikeCount, _ballCount} = getStrikeBall({
       computerInputNumbers: String(computerInputNumbers).split(''),
       userInputNumbers: String(userInputNumbers).split(''),
     });
