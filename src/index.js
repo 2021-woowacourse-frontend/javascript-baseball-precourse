@@ -23,6 +23,7 @@ export default function BaseballGame() {
     result += _strikeCount === 0 ? '' : `${_strikeCount}스트라이크`;
 
     _$result.innerHTML += `<p>${result}</p>`;
+    return result;
   }
 
   function getStrikeBall({ computerInputNumbers, userInputNumbers }) {
@@ -111,8 +112,6 @@ export default function BaseballGame() {
    ** User Input
    */
 
-  // 123a
-  // 12a
   function checkValidInput(userInput) {
     const _userInput = userInput.split('').filter((x) => parseInt(x));
     if (userInput.length !== _userInput.length || _userInput.length !== 3) {
@@ -133,6 +132,8 @@ export default function BaseballGame() {
 
   function init() {
     computerInputNumber = getComputerInputNumber();
+    // initialize submit input value
+    document.getElementById('user-input').value = "";
     // remove submit EventListener
     for (let i = 1; i < retryCount; i++) {
       let _$submitButton = document.getElementById(
