@@ -5,6 +5,10 @@ export default function BaseballGame() {
     return '결과 값 String';
   };
 
+  /*
+   ** User Input
+   */
+
   function checkValidInput(userInput) {
     const _userInput = userInput.split('').filter((x) => parseInt(x));
     if (_userInput.length !== 3) {
@@ -13,6 +17,15 @@ export default function BaseballGame() {
     return parseInt(userInput);
   }
 
+  function getUserInputNumber() {
+    const userInput = document.getElementById('user-input').value;
+    return userInput;
+  }
+
+  /*
+   ** Event Listener
+   */
+
   function clickSubmitButton() {
     const _userInput = getUserInputNumber();
     // Input is not valid
@@ -20,11 +33,6 @@ export default function BaseballGame() {
     }
     //Input valud
     console.log(_userInput);
-  }
-
-  function getUserInputNumber() {
-    const userInput = document.getElementById('user-input').value;
-    return userInput;
   }
 
   function addSubmitButtonEvent() {
