@@ -73,7 +73,7 @@ export default function BaseballGame() {
    */
 
   function getRandomSingleDigit() {
-    return Math.floor(Math.random() * 10);
+    return Math.floor(Math.random() * 9) + 1;
   }
 
   function getComputerInputNumber() {
@@ -81,9 +81,6 @@ export default function BaseballGame() {
 
     for (let i = 0; i < 3; i++) {
       let _randomNumber = getRandomSingleDigit();
-      if (i === 2 && _randomNumber === 0) {
-        _randomNumber = 1;
-      }
       _computerInput += _randomNumber * Math.pow(10, i);
     }
     return _computerInput;
