@@ -8,13 +8,18 @@ export default function BaseballGame() {
    */
 
   function checkStrike({ computerInputNumbers, userInputNumbers }) {
+    let _ballCount = 0;
     let _strikeCount = 0;
     for (let i = 0; i < 3; i++) {
       if (computerInputNumbers[i] === userInputNumbers[i]) {
         _strikeCount++;
+      } else {
+        if (computerInputNumbers.includes(userInputNumbers[i])) {
+          _ballCount++;
+        }
       }
     }
-    return _strikeCount;
+    return { _strikeCount, _ballCount };
   }
 
   function correctAnswer() {
@@ -29,14 +34,12 @@ export default function BaseballGame() {
   }
 
   const play = function(computerInputNumbers, userInputNumbers) {
-    let _ballCount;
-    let _strikeCount;
-    console.log(computerInputNumbers, userInputNumbers);
-    _strikeCount = checkStrike({
-      computerInputNumbers: String(computerInputNumbers),
-      userInputNumbers: String(userInputNumbers),
+    console.log("computerInputNumbers", computerInputNumbers)
+    let {_strikeCount, _ballCount} = checkStrike({
+      computerInputNumbers: String(computerInputNumbers).split(''),
+      userInputNumbers: String(userInputNumbers).split(''),
     });
-    console.log('strikeCount', _strikeCount);
+    console.log('strikeCount', _strikeCount, "ballCount", _ballCount);
     // ball
     // userInputNumbers.forEach((x) => {
     //   computerInputNumbers;
