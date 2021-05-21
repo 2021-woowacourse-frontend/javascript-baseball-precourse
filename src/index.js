@@ -93,9 +93,11 @@ export default function BaseballGame() {
    ** User Input
    */
 
+  // 123a
+  // 12a
   function checkValidInput(userInput) {
     const _userInput = userInput.split('').filter((x) => parseInt(x));
-    if (_userInput.length !== 3) {
+    if (userInput.length !== _userInput.length || _userInput.length !== 3) {
       return false;
     }
     return parseInt(userInput);
@@ -114,15 +116,15 @@ export default function BaseballGame() {
   function init() {
     computerInputNumber = getComputerInputNumber();
     // remove submit EventListener
-    for(let i = 1; i < retryCount; i++) {
+    for (let i = 1; i < retryCount; i++) {
       let _$submitButton = document.getElementById(
         `submit${retryCount === 1 ? '' : retryCount}`,
-      );   
+      );
       _$submitButton.removeEventListener('click', () => clickResetButton());
     }
     // remove reset EventListener
     const _$resetButton = document.getElementById(`reset`);
-    _$resetButton.removeEventListener('click', () => clickResetButton())
+    _$resetButton.removeEventListener('click', () => clickResetButton());
     retryCount = 0;
     const _$retryResult = document.getElementById('retryResult');
     _$retryResult.remove();
@@ -137,8 +139,8 @@ export default function BaseballGame() {
     console.log(retryCount, _userInput);
     // Input is not valid
     if (!checkValidInput(_userInput)) {
-      alert("유효한 input을 입력해주세요.")
-      return ;
+      alert('유효한 input을 입력해주세요.');
+      return;
     }
     //Input valud
     play(computerInputNumber, _userInput);
@@ -153,7 +155,7 @@ export default function BaseballGame() {
 
   function clickResetButton() {
     init();
-    addSubmitButtonEvent()
+    addSubmitButtonEvent();
   }
 
   function addResetButtonEvent() {
