@@ -91,17 +91,19 @@ export default function BaseballGame() {
    */
 
   function getRandomSingleDigit() {
-    return Math.floor(Math.random() * 9) + 1;
+    const min = 1;
+    const max = 10;
+  
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 
   function getComputerInputNumber() {
-    let _computerInput = 0;
+    let _computerInput = new Set();
 
-    for (let i = 0; i < 3; i++) {
-      let _randomNumber = getRandomSingleDigit();
-      _computerInput += _randomNumber * Math.pow(10, i);
+    while (_computerInput.size != 3) {
+      _computerInput.add(getRandomSingleDigit());
     }
-    return _computerInput;
+    return Number([..._computerInput].join(''));
   }
 
   /*
