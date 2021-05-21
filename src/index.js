@@ -42,11 +42,12 @@ export default function BaseballGame() {
       correctAnswer();
     } else {
       const _$app = document.getElementById('app');
+      retryCount++;
       _$app.innerHTML +=
         `<input type="text" id="user-input${retryCount}" />` +
-        '<button id="submit">확인</button>' +
+        `<button id="submit${retryCount}">확인</button>` +
         '<h3>📄 결과</h3>' +
-        '<div id="result"></div>';
+        `<div id="result${retryCount===0 ? "" : retryCount}"></div>`;
     }
     return '결과 값 String';
   };
@@ -85,13 +86,7 @@ export default function BaseballGame() {
   }
 
   function getUserInputNumber(retryCount) {
-    let _userInput;
-    if (retryCount === 0 ) {
-      _userInput = document.getElementById('user-input').value;
-    } else {
-      _userInput = document.getElementById(`user-input${retryCount}`).value;
-    }
-    return _userInput;
+    return document.getElementById(`user-input${retryCount===0 ? "" : retryCount}`).value;
   }
 
   /*
@@ -113,7 +108,7 @@ export default function BaseballGame() {
   }
 
   function addSubmitButtonEvent() {
-    const _$submitButton = document.getElementById('submit');
+    const _$submitButton = document.getElementById(`submit${retryCount===0 ? "" : retryCount}`);
     _$submitButton.addEventListener('click', () => clickSubmitButton());
   }
 }
