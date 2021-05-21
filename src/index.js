@@ -18,8 +18,11 @@ export default function BaseballGame() {
   }
 
   function correctAnswer() {
-    const _$result = document.getElementById('result');
-    _$result.innerHTML =
+    let _$result = document.getElementById('retryResult');
+    if (!_$result) {
+      _$result = document.getElementById('result');
+    }
+    _$result.innerHTML +=
       '<p>🎉<strong>정답을 맞추셨습니다!</strong>🎉</p>' +
       '<p>게임을 새로 시작하시겠습니까? <button id="reset">게임 재시작</button></p>';
     console.log('🎉정답을 맞추셨습니다!🎉');
@@ -42,13 +45,25 @@ export default function BaseballGame() {
       correctAnswer();
     } else {
       const _$app = document.getElementById('app');
+      let _$retryResult = document.getElementById('retryResult');
       retryCount++;
-      _$app.innerHTML +=
-        `<input type="text" id="user-input${retryCount}" />` +
-        `<button id="submit${retryCount}">확인</button>` +
-        '<h3>📄 결과</h3>' +
-        `<div id="result${retryCount===0 ? "" : retryCount}"></div>`;
+      if (_$retryResult === null) {
+        _$app.innerHTML += `<div id="retryResult"></div>`;
+        _$retryResult = document.getElementById('retryResult');
+        _$retryResult.innerHTML +=
+          `<input type="text" id="user-input${retryCount}" />` +
+          `<button id="submit${retryCount}">확인</button>` +
+          '<h3>📄 결과</h3>' +
+          `<div id="result${retryCount === 0 ? '' : retryCount}"></div>`;
+      } else {
+        _$retryResult.innerHTML +=
+          `<input type="text" id="user-input${retryCount}" />` +
+          `<button id="submit${retryCount}">확인</button>` +
+          '<h3>📄 결과</h3>' +
+          `<div id="result${retryCount === 0 ? '' : retryCount}"></div>`;
+      }
     }
+    addSubmitButtonEvent();
     return '결과 값 String';
   };
 
@@ -86,8 +101,16 @@ export default function BaseballGame() {
   }
 
   function getUserInputNumber(retryCount) {
-    return document.getElementById(`user-input${retryCount===0 ? "" : retryCount}`).value;
+    return document.getElementById(
+      `user-input${retryCount === 0 ? '' : retryCount}`,
+    ).value;
   }
+
+  /*
+   ** Init
+   */
+
+  function init() {}
 
   /*
    ** Event Listener
@@ -108,7 +131,9 @@ export default function BaseballGame() {
   }
 
   function addSubmitButtonEvent() {
-    const _$submitButton = document.getElementById(`submit${retryCount===0 ? "" : retryCount}`);
+    const _$submitButton = document.getElementById(
+      `submit${retryCount === 0 ? '' : retryCount}`,
+    );
     _$submitButton.addEventListener('click', () => clickSubmitButton());
   }
 }
