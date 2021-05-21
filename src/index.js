@@ -1,12 +1,13 @@
 export default function BaseballGame() {
   let computerInputNumber = getComputerInputNumber();
+  let retryCount = 0;
   addSubmitButtonEvent();
 
   /*
    ** Play Game
    */
 
-  function checkStrike({computerInputNumbers, userInputNumbers}) {
+  function checkStrike({ computerInputNumbers, userInputNumbers }) {
     let _strikeCount = 0;
     for (let i = 0; i < 3; i++) {
       if (computerInputNumbers[i] === userInputNumbers[i]) {
@@ -16,22 +17,37 @@ export default function BaseballGame() {
     return _strikeCount;
   }
 
-  // function correctAnswer() {
-  //   console.log("🎉정답을 맞추셨습니다!🎉")
-  // }
+  function correctAnswer() {
+    const _$result = document.getElementById('result');
+    _$result.innerHTML =
+      '<p>🎉<strong>정답을 맞추셨습니다!</strong>🎉</p>' +
+      '<p>게임을 새로 시작하시겠습니까? <button id="reset">게임 재시작</button></p>';
+    console.log('🎉정답을 맞추셨습니다!🎉');
+  }
 
   const play = function(computerInputNumbers, userInputNumbers) {
     let _ballCount;
     let _strikeCount;
-    console.log(computerInputNumbers, userInputNumbers)
-    _strikeCount = checkStrike({computerInputNumbers: String(computerInputNumbers), userInputNumbers: String(userInputNumbers)})
-    console.log(_strikeCount);
+    console.log(computerInputNumbers, userInputNumbers);
+    _strikeCount = checkStrike({
+      computerInputNumbers: String(computerInputNumbers),
+      userInputNumbers: String(userInputNumbers),
+    });
+    console.log('strikeCount', _strikeCount);
+    // ball
     // userInputNumbers.forEach((x) => {
     //   computerInputNumbers;
     // });
-    // if (_strikeCount === 3) {
-    //   correctAnswer();
-    // }
+    if (_strikeCount === 3) {
+      correctAnswer();
+    } else {
+      const _$app = document.getElementById('app');
+      _$app.innerHTML +=
+        `<input type="text" id="user-input${retryCount}" />` +
+        '<button id="submit">확인</button>' +
+        '<h3>📄 결과</h3>' +
+        '<div id="result"></div>';
+    }
     return '결과 값 String';
   };
 
@@ -68,8 +84,13 @@ export default function BaseballGame() {
     return parseInt(userInput);
   }
 
-  function getUserInputNumber() {
-    const _userInput = document.getElementById('user-input').value;
+  function getUserInputNumber(retryCount) {
+    let _userInput;
+    if (retryCount === 0 ) {
+      _userInput = document.getElementById('user-input').value;
+    } else {
+      _userInput = document.getElementById(`user-input${retryCount}`).value;
+    }
     return _userInput;
   }
 
@@ -77,8 +98,13 @@ export default function BaseballGame() {
    ** Event Listener
    */
 
-  function clickSubmitButton() {
+  function clickResetButton() {
     const _userInput = getUserInputNumber();
+  }
+
+  function clickSubmitButton() {
+    const _userInput = getUserInputNumber(retryCount);
+    console.log(retryCount, _userInput);
     // Input is not valid
     if (!checkValidInput(_userInput)) {
     }
