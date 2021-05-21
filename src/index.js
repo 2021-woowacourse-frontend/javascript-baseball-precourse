@@ -47,7 +47,7 @@ export default function BaseballGame() {
     }
     _$result.innerHTML +=
       '<p>🎉<strong>정답을 맞추셨습니다!</strong>🎉</p>' +
-      '<p>게임을 새로 시작하시겠습니까? <button id="reset">게임 재시작</button></p>';
+      '<p>게임을 새로 시작하시겠습니까? <button id="game-restart-button">게임 재시작</button></p>';
     console.log('🎉정답을 맞추셨습니다!🎉');
   }
 
@@ -140,7 +140,7 @@ export default function BaseballGame() {
       _$submitButton.removeEventListener('click', () => clickResetButton());
     }
     // remove reset EventListener
-    const _$resetButton = document.getElementById(`reset`);
+    const _$resetButton = document.getElementById(`game-restart-button`);
     _$resetButton.removeEventListener('click', () => clickResetButton());
     retryCount = 0;
     const _$retryResult = document.getElementById('retryResult');
@@ -176,7 +176,7 @@ export default function BaseballGame() {
   }
 
   function addResetButtonEvent() {
-    const _$resetButton = document.getElementById(`reset`);
+    const _$resetButton = document.getElementById(`game-restart-button`);
     _$resetButton.addEventListener('click', () => clickResetButton());
   }
 }
