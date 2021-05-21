@@ -5,7 +5,8 @@ export default function BaseballGame() {
    ** Play Game
    */
 
-  this.play = function(computerInputNumbers, userInputNumbers) {
+  const play = function(computerInputNumbers, userInputNumbers) {
+    console.log(computerInputNumbers, userInputNumbers)
     return '결과 값 String';
   };
 
@@ -27,7 +28,6 @@ export default function BaseballGame() {
       }
       _computerInput += _randomNumber * Math.pow(10, i);
     }
-    console.log('computerInput', _computerInput);
     return _computerInput;
   }
 
@@ -58,8 +58,7 @@ export default function BaseballGame() {
     if (!checkValidInput(_userInput)) {
     }
     //Input valud
-    getComputerInputNumber();
-    console.log('final', _userInput);
+    play(getComputerInputNumber(), _userInput);
   }
 
   function addSubmitButtonEvent() {
