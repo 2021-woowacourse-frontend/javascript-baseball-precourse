@@ -5,9 +5,21 @@ export default function BaseballGame() {
     return '결과 값 String';
   };
 
+  function checkValidInput(userInput) {
+    const _userInput = userInput.split('').filter((x) => parseInt(x));
+    if (_userInput.length !== 3) {
+      return false;
+    }
+    return parseInt(userInput);
+  }
+
   function clickSubmitButton() {
-    const userInput = getUserInputNumber();
-    console.log(userInput);
+    const _userInput = getUserInputNumber();
+    // Input is not valid
+    if (!checkValidInput(_userInput)) {
+    }
+    //Input valud
+    console.log(_userInput);
   }
 
   function getUserInputNumber() {
