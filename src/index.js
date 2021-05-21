@@ -7,6 +7,24 @@ export default function BaseballGame() {
    ** Play Game
    */
 
+  function printResult({ _strikeCount, _ballCount }) {
+    let _$result = document.getElementById('retryResult');
+    if (!_$result) {
+      _$result = document.getElementById('result');
+      _$result.innerHTML += `<div id="retryResult"></div>`;
+      _$result = document.getElementById('retryResult');
+    }
+
+    let result = '';
+    if (_strikeCount === 0 && _ballCount === 0) {
+      result = '낫싱';
+    }
+    result += _ballCount === 0 ? '' : `${_ballCount}볼`;
+    result += _strikeCount === 0 ? '' : `${_strikeCount}스트라이크`;
+
+    _$result.innerHTML += `<p>${result}</p>`;
+  }
+
   function getStrikeBall({ computerInputNumbers, userInputNumbers }) {
     let _ballCount = 0;
     let _strikeCount = 0;
@@ -34,20 +52,17 @@ export default function BaseballGame() {
   }
 
   const play = function(computerInputNumbers, userInputNumbers) {
-    console.log("computerInputNumbers", computerInputNumbers)
-    let {_strikeCount, _ballCount} = getStrikeBall({
+    console.log('computerInputNumbers', computerInputNumbers);
+    let { _strikeCount, _ballCount } = getStrikeBall({
       computerInputNumbers: String(computerInputNumbers).split(''),
       userInputNumbers: String(userInputNumbers).split(''),
     });
-    console.log('strikeCount', _strikeCount, "ballCount", _ballCount);
-    // ball
-    // userInputNumbers.forEach((x) => {
-    //   computerInputNumbers;
-    // });
+    console.log('strikeCount', _strikeCount, 'ballCount', _ballCount);
     if (_strikeCount === 3) {
       correctAnswer();
       addResetButtonEvent();
     } else {
+      printResult({ _strikeCount, _ballCount });
       const _$app = document.getElementById('app');
       let _$retryResult = document.getElementById('retryResult');
       retryCount++;
