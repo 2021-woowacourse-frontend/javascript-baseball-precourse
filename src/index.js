@@ -1,5 +1,5 @@
 export default function BaseballGame() {
-  addButtonEvent();
+  addSubmitButtonEvent();
 
   this.play = function(computerInputNumbers, userInputNumbers) {
     return '결과 값 String';
@@ -15,7 +15,7 @@ export default function BaseballGame() {
     return userInput;
   }
 
-  function addButtonEvent() {
+  function addSubmitButtonEvent() {
     const _$submitButton = document.getElementById('submit');
     _$submitButton.addEventListener('click', () => clickSubmitButton());
   }
