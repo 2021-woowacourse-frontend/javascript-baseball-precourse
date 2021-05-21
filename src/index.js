@@ -2,7 +2,7 @@ export default function BaseballGame() {
   let computerInputNumber = getComputerInputNumber();
   let retryCount = 0;
   addSubmitButtonEvent();
-
+  
   /*
    ** Play Game
    */
@@ -54,7 +54,7 @@ export default function BaseballGame() {
 
   const play = function(computerInputNumbers, userInputNumbers) {
     console.log('computerInputNumbers', computerInputNumbers);
-    let _result = "";
+    let _result = '';
     let { _strikeCount, _ballCount } = getStrikeBall({
       computerInputNumbers: String(computerInputNumbers).split(''),
       userInputNumbers: String(userInputNumbers).split(''),
@@ -87,7 +87,7 @@ export default function BaseballGame() {
     addSubmitButtonEvent();
     return _result;
   };
-
+  
   /*
    ** Computer Input
    */
@@ -95,7 +95,7 @@ export default function BaseballGame() {
   function getRandomSingleDigit() {
     const min = 1;
     const max = 10;
-  
+
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
@@ -133,7 +133,7 @@ export default function BaseballGame() {
   function init() {
     computerInputNumber = getComputerInputNumber();
     // initialize submit input value
-    document.getElementById('user-input').value = "";
+    document.getElementById('user-input').value = '';
     // remove submit EventListener
     for (let i = 1; i < retryCount; i++) {
       let _$submitButton = document.getElementById(
