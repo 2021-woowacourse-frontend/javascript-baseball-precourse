@@ -11,21 +11,19 @@ export default function BaseballGame() {
    ** Play Game
    */
 
-  function printResult({ strikeCount, ballCount }) {
+  function getResult({ strikeCount, ballCount }) {
     let $result = document.getElementById('retryResult');
     if (!$result) {
       $result = document.getElementById('result');
       $result.innerHTML += `<div id="retryResult"></div>`;
       $result = document.getElementById('retryResult');
     }
-
     let result = '';
     if (strikeCount === 0 && ballCount === 0) {
       result = '낫싱';
     }
     result += ballCount === 0 ? '' : `${ballCount}볼`;
     result += strikeCount === 0 ? '' : `${strikeCount}스트라이크`;
-
     $result.innerHTML += `<p>${result}</p>`;
     return result;
   }
@@ -69,7 +67,7 @@ export default function BaseballGame() {
       addButtonEvent(`game-restart-button`, clickResetButton);
     } else {
       _retryFlag = 1;
-      result = printResult({ strikeCount, ballCount });
+      result = getResult({ strikeCount, ballCount });
       const $app = document.getElementById('app');
       let $retryResult = document.getElementById('retryResult');
       _retryCount++;
