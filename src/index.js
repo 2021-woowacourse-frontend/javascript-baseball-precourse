@@ -1,7 +1,6 @@
 export default function BaseballGame() {
   let _computerInputNumber = getComputerInputNumber();
   let _retryCount = 0;
-  let _retryFlag = 0;
 
   addButtonEvent(
     `submit${_retryCount === 0 ? '' : _retryCount}`,
@@ -67,7 +66,6 @@ export default function BaseballGame() {
       result = correctAnswer();
       addButtonEvent(`game-restart-button`, clickResetButton);
     } else {
-      _retryFlag = 1;
       result = getResult({ strikeCount, ballCount });
       const $app = document.getElementById('app');
       let $retryResult = document.getElementById('retryResult');
@@ -169,7 +167,7 @@ export default function BaseballGame() {
   function clickSubmitButton() {
     const userInput = getUserInputNumber(_retryCount);
     console.log(_retryCount, userInput);
-    if (!_retryFlag && !checkValidInput(userInput)) {
+    if (!checkValidInput(userInput)) {
       alert('유효한 input을 입력해주세요.');
       return;
     }
