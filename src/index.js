@@ -2,7 +2,10 @@ export default function BaseballGame() {
   let _computerInputNumber = getComputerInputNumber();
   let _retryCount = 0;
   let _retryFlag = 0;
-  addButtonEvent(`submit${_retryCount === 0 ? '' : _retryCount}`, clickSubmitButton);
+  addButtonEvent(
+    `submit${_retryCount === 0 ? '' : _retryCount}`,
+    clickSubmitButton,
+  );
 
   /*
    ** Play Game
@@ -73,20 +76,17 @@ export default function BaseballGame() {
       if ($retryResult === null) {
         $app.innerHTML += `<div id="retryResult"></div>`;
         $retryResult = document.getElementById('retryResult');
-        $retryResult.innerHTML +=
-          `<input type="text" id="user-input${_retryCount}" />` +
-          `<button id="submit${_retryCount}">확인</button>` +
-          '<h3>📄 결과</h3>' +
-          `<div id="result${_retryCount === 0 ? '' : _retryCount}"></div>`;
-      } else {
-        $retryResult.innerHTML +=
-          `<input type="text" id="user-input${_retryCount}" />` +
-          `<button id="submit${_retryCount}">확인</button>` +
-          '<h3>📄 결과</h3>' +
-          `<div id="result${_retryCount === 0 ? '' : _retryCount}"></div>`;
       }
+      $retryResult.innerHTML +=
+        `<input type="text" id="user-input${_retryCount}" />` +
+        `<button id="submit${_retryCount}">확인</button>` +
+        '<h3>📄 결과</h3>' +
+        `<div id="result${_retryCount === 0 ? '' : _retryCount}"></div>`;
     }
-    addButtonEvent(`submit${_retryCount === 0 ? '' : _retryCount}`, clickSubmitButton);
+    addButtonEvent(
+      `submit${_retryCount === 0 ? '' : _retryCount}`,
+      clickSubmitButton,
+    );
     return result;
   };
 
