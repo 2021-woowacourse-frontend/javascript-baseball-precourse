@@ -113,8 +113,8 @@ export default function BaseballGame() {
    */
 
   function checkValidInput(userInput) {
-    const _userInput = userInput.split('').filter((x) => parseInt(x));
-    if (userInput.length !== _userInput.length || _userInput.length !== 3) {
+    const checkUserInput = userInput.split('').filter((x) => parseInt(x));
+    if (userInput.length !== checkUserInput.length || checkUserInput.length !== 3) {
       return false;
     }
     return parseInt(userInput);
