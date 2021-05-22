@@ -1,6 +1,7 @@
 export default function BaseballGame() {
   let _computerInputNumber = getComputerInputNumber();
   let _retryCount = 0;
+  let _retryFlag = 0;
   addSubmitButtonEvent();
 
   /*
@@ -64,6 +65,7 @@ export default function BaseballGame() {
       result = correctAnswer();
       addResetButtonEvent();
     } else {
+      _retryFlag = 1;
       result = printResult({ strikeCount, ballCount });
       const $app = document.getElementById('app');
       let $retryResult = document.getElementById('retryResult');
@@ -147,6 +149,7 @@ export default function BaseballGame() {
     const $resetButton = document.getElementById(`game-restart-button`);
     $resetButton.removeEventListener('click', () => clickResetButton());
   }
+
   function removeDOM() {
     const $retryResult = document.getElementById('retryResult');
     $retryResult.remove();
@@ -167,7 +170,7 @@ export default function BaseballGame() {
   function clickSubmitButton() {
     const userInput = getUserInputNumber(_retryCount);
     console.log(_retryCount, userInput);
-    if (!checkValidInput(userInput)) {
+    if (!_retryFlag && !checkValidInput(userInput)) {
       alert('유효한 input을 입력해주세요.');
       return;
     }
@@ -183,7 +186,6 @@ export default function BaseballGame() {
 
   function clickResetButton() {
     init();
-    addSubmitButtonEvent();
   }
 
   function addResetButtonEvent() {
