@@ -65,19 +65,19 @@ export default function BaseballGame() {
       addResetButtonEvent();
     } else {
       result = printResult({ strikeCount, ballCount });
-      const _$app = document.getElementById('app');
-      let _$retryResult = document.getElementById('retryResult');
+      const $app = document.getElementById('app');
+      let $retryResult = document.getElementById('retryResult');
       _retryCount++;
-      if (_$retryResult === null) {
-        _$app.innerHTML += `<div id="retryResult"></div>`;
-        _$retryResult = document.getElementById('retryResult');
-        _$retryResult.innerHTML +=
+      if ($retryResult === null) {
+        $app.innerHTML += `<div id="retryResult"></div>`;
+        $retryResult = document.getElementById('retryResult');
+        $retryResult.innerHTML +=
           `<input type="text" id="user-input${_retryCount}" />` +
           `<button id="submit${_retryCount}">확인</button>` +
           '<h3>📄 결과</h3>' +
           `<div id="result${_retryCount === 0 ? '' : _retryCount}"></div>`;
       } else {
-        _$retryResult.innerHTML +=
+        $retryResult.innerHTML +=
           `<input type="text" id="user-input${_retryCount}" />` +
           `<button id="submit${_retryCount}">확인</button>` +
           '<h3>📄 결과</h3>' +
@@ -142,11 +142,11 @@ export default function BaseballGame() {
       $submitButton.removeEventListener('click', () => clickResetButton());
     }
     // remove reset EventListener
-    const _$resetButton = document.getElementById(`game-restart-button`);
-    _$resetButton.removeEventListener('click', () => clickResetButton());
+    const $resetButton = document.getElementById(`game-restart-button`);
+    $resetButton.removeEventListener('click', () => clickResetButton());
     _retryCount = 0;
-    const _$retryResult = document.getElementById('retryResult');
-    _$retryResult.remove();
+    const $retryResult = document.getElementById('retryResult');
+    $retryResult.remove();
   }
 
   /*
@@ -154,13 +154,13 @@ export default function BaseballGame() {
    */
 
   function clickSubmitButton() {
-    const _userInput = getUserInputNumber(_retryCount);
-    console.log(_retryCount, _userInput);
-    if (!checkValidInput(_userInput)) {
+    const userInput = getUserInputNumber(_retryCount);
+    console.log(_retryCount, userInput);
+    if (!checkValidInput(userInput)) {
       alert('유효한 input을 입력해주세요.');
       return;
     }
-    console.log(play(_computerInputNumber, _userInput));
+    console.log(play(_computerInputNumber, userInput));
   }
 
   function addSubmitButtonEvent() {
@@ -176,8 +176,8 @@ export default function BaseballGame() {
   }
 
   function addResetButtonEvent() {
-    const _$resetButton = document.getElementById(`game-restart-button`);
-    _$resetButton.addEventListener('click', () => clickResetButton());
+    const $resetButton = document.getElementById(`game-restart-button`);
+    $resetButton.addEventListener('click', () => clickResetButton());
   }
 }
 
