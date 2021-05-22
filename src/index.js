@@ -37,10 +37,8 @@ export default function BaseballGame() {
     for (let i = 0; i < 3; i++) {
       if (computerInputNumbers[i] === userInputNumbers[i]) {
         strikeCount++;
-      } else {
-        if (computerInputNumbers.includes(userInputNumbers[i])) {
-          ballCount++;
-        }
+      } else if (computerInputNumbers.includes(userInputNumbers[i])) {
+        ballCount++;
       }
     }
     return { strikeCount, ballCount };
