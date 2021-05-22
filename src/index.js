@@ -2,7 +2,7 @@ export default function BaseballGame() {
   let _computerInputNumber = getComputerInputNumber();
   let _retryCount = 0;
   let _retryFlag = 0;
-  addSubmitButtonEvent();
+  addButtonEvent(`submit${_retryCount === 0 ? '' : _retryCount}`, clickSubmitButton);
 
   /*
    ** Play Game
@@ -63,7 +63,7 @@ export default function BaseballGame() {
     console.log('strikeCount', strikeCount, 'ballCount', ballCount);
     if (strikeCount === 3) {
       result = correctAnswer();
-      addResetButtonEvent();
+      addButtonEvent(`game-restart-button`, clickResetButton);
     } else {
       _retryFlag = 1;
       result = printResult({ strikeCount, ballCount });
@@ -86,7 +86,7 @@ export default function BaseballGame() {
           `<div id="result${_retryCount === 0 ? '' : _retryCount}"></div>`;
       }
     }
-    addSubmitButtonEvent();
+    addButtonEvent(`submit${_retryCount === 0 ? '' : _retryCount}`, clickSubmitButton);
     return result;
   };
 
@@ -177,20 +177,13 @@ export default function BaseballGame() {
     console.log(play(_computerInputNumber, userInput));
   }
 
-  function addSubmitButtonEvent() {
-    const $submitButton = document.getElementById(
-      `submit${_retryCount === 0 ? '' : _retryCount}`,
-    );
-    $submitButton.addEventListener('click', () => clickSubmitButton());
-  }
-
   function clickResetButton() {
     init();
   }
 
-  function addResetButtonEvent() {
-    const $resetButton = document.getElementById(`game-restart-button`);
-    $resetButton.addEventListener('click', () => clickResetButton());
+  function addButtonEvent(buttonId, func) {
+    const $submitButton = document.getElementById(buttonId);
+    $submitButton.addEventListener('click', () => func());
   }
 }
 
