@@ -2,10 +2,13 @@ export default function BaseballGame() {
   let _computerInputNumber = getComputerInputNumber();
   let _retryCount = 0;
   let _retryFlag = 0;
+
   addButtonEvent(
     `submit${_retryCount === 0 ? '' : _retryCount}`,
     clickSubmitButton,
   );
+
+  return;
 
   /*
    ** Play Game
@@ -54,7 +57,7 @@ export default function BaseballGame() {
     return '🎉정답을 맞추셨습니다!🎉';
   }
 
-  const play = function(computerInputNumbers, userInputNumbers) {
+  function play(computerInputNumbers, userInputNumbers) {
     console.log('computerInputNumbers', computerInputNumbers);
     let result = '';
     let { strikeCount, ballCount } = getStrikeBall({
@@ -86,7 +89,7 @@ export default function BaseballGame() {
       clickSubmitButton,
     );
     return result;
-  };
+  }
 
   /*
    ** Computer Input
