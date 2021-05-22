@@ -2,7 +2,7 @@ export default function BaseballGame() {
   let _computerInputNumber = getComputerInputNumber();
   let _retryCount = 0;
   addSubmitButtonEvent();
-  
+
   /*
    ** Play Game
    */
@@ -87,7 +87,7 @@ export default function BaseballGame() {
     addSubmitButtonEvent();
     return result;
   };
-  
+
   /*
    ** Computer Input
    */
@@ -114,7 +114,10 @@ export default function BaseballGame() {
 
   function checkValidInput(userInput) {
     const checkUserInput = userInput.split('').filter((x) => parseInt(x));
-    if (userInput.length !== checkUserInput.length || checkUserInput.length !== 3) {
+    if (
+      userInput.length !== checkUserInput.length ||
+      checkUserInput.length !== 3
+    ) {
       return false;
     }
     return parseInt(userInput);
@@ -130,23 +133,31 @@ export default function BaseballGame() {
    ** Init
    */
 
-  function init() {
-    _computerInputNumber = getComputerInputNumber();
-    // initialize submit input value
+  function initValue() {
     document.getElementById('user-input').value = '';
-    // remove submit EventListener
+  }
+
+  function removeEvent() {
     for (let i = 1; i < _retryCount; i++) {
       let $submitButton = document.getElementById(
         `submit${_retryCount === 1 ? '' : _retryCount}`,
       );
       $submitButton.removeEventListener('click', () => clickResetButton());
     }
-    // remove reset EventListener
     const $resetButton = document.getElementById(`game-restart-button`);
     $resetButton.removeEventListener('click', () => clickResetButton());
-    _retryCount = 0;
+  }
+  function removeDOM() {
     const $retryResult = document.getElementById('retryResult');
     $retryResult.remove();
+  }
+
+  function init() {
+    _computerInputNumber = getComputerInputNumber();
+    initValue();
+    removeEvent();
+    _retryCount = 0;
+    removeDOM();
   }
 
   /*
