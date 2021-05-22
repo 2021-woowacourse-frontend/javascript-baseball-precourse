@@ -55,7 +55,7 @@ export default function BaseballGame() {
     return '🎉정답을 맞추셨습니다!🎉';
   }
 
-  function play(computerInputNumbers, userInputNumbers) {
+  function play({computerInputNumbers, userInputNumbers}) {
     console.log('computerInputNumbers', computerInputNumbers);
     let result = '';
     let { strikeCount, ballCount } = getStrikeBall({
@@ -173,7 +173,7 @@ export default function BaseballGame() {
       alert('유효한 input을 입력해주세요.');
       return;
     }
-    console.log(play(_computerInputNumber, userInput));
+    console.log(play({_computerInputNumber, userInput}));
   }
 
   function clickResetButton() {
