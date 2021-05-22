@@ -27,6 +27,7 @@ export default function BaseballGame() {
     result += ballCount === 0 ? '' : `${ballCount}볼`;
     result += strikeCount === 0 ? '' : `${strikeCount}스트라이크`;
     $result.innerHTML += `<p>${result}</p>`;
+
     return result;
   }
 
@@ -40,6 +41,7 @@ export default function BaseballGame() {
         ballCount++;
       }
     }
+
     return { strikeCount, ballCount };
   }
 
@@ -51,6 +53,7 @@ export default function BaseballGame() {
     $result.innerHTML +=
       '<p>🎉<strong>정답을 맞추셨습니다!</strong>🎉</p>' +
       '<p>게임을 새로 시작하시겠습니까? <button id="game-restart-button">게임 재시작</button></p>';
+
     return '🎉정답을 맞추셨습니다!🎉';
   }
 
@@ -84,6 +87,7 @@ export default function BaseballGame() {
       `submit${_retryCount === 0 ? '' : _retryCount}`,
       clickSubmitButton,
     );
+
     return result;
   }
 
@@ -100,10 +104,10 @@ export default function BaseballGame() {
 
   function getComputerInputNumber() {
     let computerInput = new Set();
-
     while (computerInput.size != 3) {
       computerInput.add(getRandomSingleDigit());
     }
+
     return Number([...computerInput].join(''));
   }
 
@@ -119,6 +123,7 @@ export default function BaseballGame() {
     ) {
       return false;
     }
+
     return parseInt(userInput);
   }
 
@@ -169,6 +174,7 @@ export default function BaseballGame() {
     console.log(_retryCount, userInput);
     if (!checkValidInput(userInput)) {
       alert('유효한 input을 입력해주세요.');
+      
       return;
     }
     console.log(play(_computerInputNumber, userInput));
