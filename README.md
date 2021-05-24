@@ -1,11 +1,24 @@
 # ⚾ 미션 - 숫자 야구 게임
 
-- [x] [CORS 해결하기](https://velog.io/@takeknowledge/로컬에서-CORS-policy-관련-에러가-발생하는-이유-3gk4gyhreu) 
-- [ ] randomNumberGenerator(): computerInputNumbers 생성 함수
-- [ ] play(): computerInputNumbers, userInputNumbers 비교해 string 반환 함수
+### to know
+- [CORS 해결하기](https://velog.io/@takeknowledge/로컬에서-CORS-policy-관련-에러가-발생하는-이유-3gk4gyhreu)
+- [자바스크립트의 function](https://pks2974.medium.com/javascript%EC%99%80-function-%ED%95%A8%EC%88%981-a35281b56f8a)
+> JavaScript에서 모든 함수는 Function 객체입니다. 
+- [자바스크립트의 class](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Classes)
+> Class는 사실 "특별한 함수"입니다. 함수를 함수 표현식과 함수 선언으로 정의할 수 있듯이 class 문법도 class 표현식 and class 선언 두 가지 방법을 제공합니다.
+- [module이란] (https://ko.javascript.info/modules-intro#:~:text=%EA%B0%9C%EB%B0%9C%ED%95%98%EB%8A%94%20%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%EC%9D%98%20%ED%81%AC%EA%B8%B0,%EA%B5%AC%EC%84%B1%EB%90%9C%20%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%20%ED%95%98%EB%82%98%EB%A1%9C%20%EA%B5%AC%EC%84%B1%EB%90%A9%EB%8B%88%EB%8B%A4.)
+> 개발하는 애플리케이션의 크기가 커지면 언젠간 파일을 여러 개로 분리해야 하는 시점이 옵니다. 이때 분리된 파일 각각을 '모듈(module)'이라고 부르는데, 모듈은 대개 클래스 하나 혹은 특정한 목적을 가진 복수의 함수로 구성된 라이브러리 하나로 구성됩니다
+- [export와 import(module 내보내고 가져오기)] (https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/export)
+> export 할 경우에는 import { 함수명 } from * 으로 사용하는데, export default 할 경우에는 import 함수명 from * 으로 사용하게 됩니다.
+
+
+
+### to implement
+- [x] randomNumGenerator(): computerInputNumbers 생성 함수
+- [ ] checkUserInput() : userInputNumbers 검증 함수
+- [x] play(): computerInputNumbers, userInputNumbers 비교해 string 반환 함수
 - [ ] game-restart-button 버튼
 - [ ] restartGame(): game-restart-button 함수
-
 
 ## 🎯 기능 요구사항
 
