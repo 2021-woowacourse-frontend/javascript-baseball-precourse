@@ -103,6 +103,13 @@ export default class BaseballGame {
           newBtn.innerHTML = '게임 재시작';
           newDiv.append(newBtn);
           document.body.appendChild(newDiv);
+          newBtn.addEventListener('click', function(event) {
+              baseball = new BaseballGame();
+              document.getElementById('user-input').value = '';
+              newBtn.remove();
+              newDiv.remove();
+              document.getElementById('result').innerText  = '';
+          })
       }
   });
   

@@ -20,7 +20,7 @@
 - [x] checkUserInput() : userInputNumbers 검증 함수
 - [x] play(): computerInputNumbers, userInputNumbers 비교해 string 반환 함수
 - [x] game-restart-button 버튼
-- [ ] restartGame(): game-restart-button 함수
+- [x] game-restart-button 의 eventlistener
 
 ## 🎯 기능 요구사항
 
