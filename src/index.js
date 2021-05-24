@@ -1,4 +1,4 @@
-export default class BaseballGame {
+export default class BaseballGame { 
 
     constructor() {
       this.computerNum = this.randomNumGenerator();
@@ -76,37 +76,7 @@ export default class BaseballGame {
       return this.result;
     }
 
-    checkSuccess(resultText) {
-        if (resultText == '🎉 정답을 맞추셨습니다! 🎉') {
-            console.log("haha")
-            let newDiv = document.createElement('div');
-            newDiv.innerHTML = '게임을 새로 시작하시겠습니까?';
-            newDiv.setAttribute('id', 'newDiv');
-            let newBtn = document.createElement('button');
-            newBtn.innerHTML = '게임 재시작';
-            newBtn.setAttribute('id', 'newBtn')
-            newDiv.append(newBtn);
-            document.body.appendChild(newDiv);
-            newBtn.addEventListener('click', this.restartGame);
-        }
-      }
-
-      restartGame(event) {
-        let newBtn = document.getElementById('newBtn');
-        let newDiv = document.getElementById('newDiv');
-        baseball = new BaseballGame();
-        document.getElementById('user-input').value = '';
-        newBtn.remove();
-        newDiv.remove();
-        document.getElementById('result').innerText  = '';
-        newBtn.removeEventListener('click', this.restartGame);
-    }
-  }
-  
-  const checkBtn = document.getElementById('submit');
-  let baseball = new BaseballGame();
-  
-  checkBtn.addEventListener('click', function(event){
+    clickCheck(event) {
       let userInputNumbers = document.getElementById('user-input').value;
       console.log(userInputNumbers);
       let checkInput = baseball.checkUserInput(userInputNumbers);
@@ -122,5 +92,35 @@ export default class BaseballGame {
       baseball.ball = 0;
       baseball.strike = 0;
       baseball.checkSuccess(resultText);
-  });
+    }
 
+    checkSuccess(resultText) {
+      if (resultText == '🎉 정답을 맞추셨습니다! 🎉') {
+          console.log("haha")
+          let newDiv = document.createElement('div');
+          newDiv.innerHTML = '게임을 새로 시작하시겠습니까?';
+          newDiv.setAttribute('id', 'newDiv');
+          let newBtn = document.createElement('button');
+          newBtn.innerHTML = '게임 재시작';
+          newBtn.setAttribute('id', 'newBtn')
+          newDiv.append(newBtn);
+          document.body.appendChild(newDiv);
+          newBtn.addEventListener('click', this.restartGame);
+      }
+    }
+
+    restartGame(event) {
+      let newBtn = document.getElementById('newBtn');
+      let newDiv = document.getElementById('newDiv');
+      baseball = new BaseballGame();
+      document.getElementById('user-input').value = '';
+      newBtn.remove();
+      newDiv.remove();
+      document.getElementById('result').innerText  = '';
+      newBtn.removeEventListener('click', this.restartGame);
+    }
+  }
+
+  let baseball = new BaseballGame();
+  let checkBtn = document.getElementById('submit');
+  checkBtn.addEventListener('click', baseball.clickCheck); 
